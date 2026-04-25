@@ -30,7 +30,7 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-[var(--bg-primary)]/40 z-0"></div>
         
-        <div className="relative z-30 max-w-5xl -translate-x-8 md:-translate-x-24">
+        <div className="relative z-30 max-w-5xl translate-x-0 md:-translate-x-24">
           <FadeUp delay={1.5}>
             <p className="eyebrow mb-6 text-[var(--bg-primary)] mix-blend-difference">{hero.eyebrow}</p>
           </FadeUp>
@@ -47,11 +47,11 @@ export default function Home() {
           </FadeUp>
         </div>
 
-        <FadeUp delay={2.2} className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[55vh] md:h-[90vh] pointer-events-none transition-all duration-1000">
+        <FadeUp delay={2.2} className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[70vh] md:h-[90vh] pointer-events-none transition-all duration-1000">
           <img 
             src="/media/ana/ana-profile-no-background.png" 
             alt="Ana Ontoria" 
-            className="h-full w-auto object-contain object-bottom opacity-40 md:opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+            className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
           />
         </FadeUp>
       </section>
