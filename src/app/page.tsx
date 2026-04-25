@@ -5,12 +5,36 @@ import Navbar from "@/components/Navbar";
 import FadeUp from "@/components/FadeUp";
 import RecommendationCard from "@/components/RecommendationCard";
 import EventDiscovery from "@/components/EventDiscovery";
-import FloatingLint from "@/components/FloatingLint";
 import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
 import content from "@/data/content.json";
 
 export default function Home() {
   const { hero, about, experience, values, stories, speaking, services, recommendations, footer } = content;
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!portraitRef.current) return;
+    const deltaX = e.touches[0].clientX - touchStart;
+    // Allow a bit of movement
+    const movement = Math.max(-100, Math.min(100, deltaX));
+    gsap.to(portraitRef.current, {
+      x: movement,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  };
+
+  const handleTouchEnd = () => {
+    // Optionally return to center or stay
+    // gsap.to(portraitRef.current, { x: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+  };
 
   return (
     <main className="min-h-screen bg-[var(--bg-primary)] overflow-x-hidden">
@@ -18,7 +42,13 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+      <section 
+        ref={sectionRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden"
+      >
         <video 
           autoPlay 
           loop 
@@ -48,15 +78,18 @@ export default function Home() {
           </FadeUp>
         </div>
 
-        <FadeUp delay={2.2} className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[70vh] md:h-[90vh] pointer-events-none transition-all duration-1000">
-          <img 
-            src="/media/ana/ana-profile-no-background.png" 
-            alt="Ana Ontoria" 
-            className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-          />
-        </FadeUp>
-
-        <FloatingLint />
+        <div 
+          ref={portraitRef}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[70vh] md:h-[90vh] pointer-events-none transition-opacity duration-1000"
+        >
+          <FadeUp delay={2.2}>
+            <img 
+              src="/media/ana/ana-profile-no-background.png" 
+              alt="Ana Ontoria" 
+              className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+            />
+          </FadeUp>
+        </div>
       </section>
 
       {/* Values Section */}
