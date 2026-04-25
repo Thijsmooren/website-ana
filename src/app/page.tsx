@@ -14,21 +14,6 @@ export default function Home() {
   const { hero, about, experience, values, stories, speaking, services, recommendations, footer } = content;
   const [isBubbleOpen, setIsBubbleOpen] = useState(false);
   const portraitRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [touchStart, setTouchStart] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    // Reverted hero drag
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    // Reverted hero drag
-  };
-
-  const handleTouchEnd = () => {
-    // Reverted hero drag
-  };
 
   return (
     <main className="min-h-screen bg-[var(--bg-primary)] overflow-x-hidden">
@@ -82,7 +67,7 @@ export default function Home() {
           </FadeUp>
 
           {isBubbleOpen && (
-            <div className="absolute bottom-[70%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[60%] z-50 w-[280px] md:w-[320px]">
+            <div className="absolute bottom-[75%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[65%] z-50 w-[280px] md:w-[320px]">
               <div className="speech-bubble glass-card text-left relative">
                 <button 
                   onClick={(e) => { e.stopPropagation(); setIsBubbleOpen(false); }}
@@ -90,9 +75,9 @@ export default function Home() {
                 >
                   <X size={16} />
                 </button>
-                <p className="text-xs font-sans mb-3 text-[var(--accent-strong)] font-medium uppercase tracking-widest">Ana Ontoria</p>
-                <p className="text-xl font-serif mb-6 text-[var(--text-primary)] leading-tight">
-                  Ola! I love to connect, let's chat about your next experience in Málaga.
+                <p className="text-xs font-sans mb-2 text-[var(--accent-strong)] font-medium uppercase tracking-widest">Ana Ontoria</p>
+                <p className="text-lg md:text-xl font-serif mb-4 text-[var(--text-primary)] leading-snug">
+                  Hola! I love to connect, let's chat about your next experience in Málaga.
                 </p>
                 <a 
                   href={content.personal.linkedin}
