@@ -5,35 +5,29 @@ import Navbar from "@/components/Navbar";
 import FadeUp from "@/components/FadeUp";
 import RecommendationCard from "@/components/RecommendationCard";
 import EventDiscovery from "@/components/EventDiscovery";
-import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Star, X } from "lucide-react";
 import content from "@/data/content.json";
+import { useState, useRef } from "react";
+import gsap from "gsap";
 
 export default function Home() {
   const { hero, about, experience, values, stories, speaking, services, recommendations, footer } = content;
+  const [isBubbleOpen, setIsBubbleOpen] = useState(false);
   const portraitRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [touchStart, setTouchStart] = useState(0);
   const [currentX, setCurrentX] = useState(0);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
+    // Reverted hero drag
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!portraitRef.current) return;
-    const deltaX = e.touches[0].clientX - touchStart;
-    // Allow a bit of movement
-    const movement = Math.max(-100, Math.min(100, deltaX));
-    gsap.to(portraitRef.current, {
-      x: movement,
-      duration: 0.5,
-      ease: "power2.out"
-    });
+    // Reverted hero drag
   };
 
   const handleTouchEnd = () => {
-    // Optionally return to center or stay
-    // gsap.to(portraitRef.current, { x: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+    // Reverted hero drag
   };
 
   return (
@@ -43,10 +37,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        ref={sectionRef}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
         className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden"
       >
         <video 
@@ -80,36 +70,66 @@ export default function Home() {
 
         <div 
           ref={portraitRef}
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[70vh] md:h-[90vh] pointer-events-none transition-opacity duration-1000"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-40 h-[70vh] md:h-[90vh] transition-all duration-1000 cursor-pointer group"
+          onClick={() => setIsBubbleOpen(!isBubbleOpen)}
         >
-          <FadeUp delay={2.2}>
+          <FadeUp delay={2.2} className="h-full pointer-events-none">
             <img 
               src="/media/ana/ana-profile-no-background.png" 
               alt="Ana Ontoria" 
-              className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+              className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] group-hover:scale-[1.02] transition-transform duration-500"
             />
           </FadeUp>
+
+          {isBubbleOpen && (
+            <div className="absolute bottom-[70%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[60%] z-50 w-[280px] md:w-[320px]">
+              <div className="speech-bubble glass-card text-left relative">
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setIsBubbleOpen(false); }}
+                  className="absolute top-4 right-4 text-[var(--accent-soft)] hover:text-[var(--accent-strong)] transition-colors"
+                >
+                  <X size={16} />
+                </button>
+                <p className="text-xs font-sans mb-3 text-[var(--accent-strong)] font-medium uppercase tracking-widest">Ana Ontoria</p>
+                <p className="text-xl font-serif mb-6 text-[var(--text-primary)] leading-tight">
+                  Ola! I love to connect, let's chat about your next experience in Málaga.
+                </p>
+                <a 
+                  href={content.personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[var(--accent-strong)] border-b border-[var(--accent-strong)] pb-1 text-xs uppercase tracking-widest font-sans hover:opacity-60 transition-opacity"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Connect on LinkedIn <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Values Section */}
       <section className="py-20 bg-[var(--bg-primary)] border-b border-[var(--color-border-subtle)] overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee">
-          <div className="flex gap-20 px-10">
-            {values.map((v, i) => (
-              <div key={`v1-${i}`} className="border-l border-[var(--color-border-subtle)] pl-8 py-4 min-w-[300px]">
-                <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
-                <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex gap-20 px-10">
-            {values.map((v, i) => (
-              <div key={`v2-${i}`} className="border-l border-[var(--color-border-subtle)] pl-8 py-4 min-w-[300px]">
-                <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
-                <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
-              </div>
-            ))}
+        <div className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing px-6">
+          <div className="flex whitespace-nowrap animate-marquee md:animate-marquee">
+            <div className="flex gap-12 md:gap-20">
+              {values.map((v, i) => (
+                <div key={`v1-${i}`} className="border-l border-[var(--color-border-subtle)] pl-6 md:pl-8 py-4 min-w-[260px] md:min-w-[300px]">
+                  <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
+                  <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
+                </div>
+              ))}
+            </div>
+            {/* Duplicate for marquee effect */}
+            <div className="flex gap-12 md:gap-20">
+              {values.map((v, i) => (
+                <div key={`v2-${i}`} className="border-l border-[var(--color-border-subtle)] pl-6 md:pl-8 py-4 min-w-[260px] md:min-w-[300px]">
+                  <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
+                  <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

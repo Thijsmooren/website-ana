@@ -122,6 +122,17 @@ p {
   animation-play-state: paused;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Glassmorphism & UI Components */
 .glass-card {
   background: rgba(255, 255, 255, 0.4);
@@ -143,7 +154,7 @@ p {
   content: '';
   position: absolute;
   bottom: -10px;
-  right: 40px;
+  left: 50%;
   width: 20px;
   height: 20px;
   background: inherit;
@@ -151,8 +162,16 @@ p {
   -webkit-backdrop-filter: inherit;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  transform: rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
   z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .speech-bubble::after {
+    left: auto;
+    right: 40px;
+    transform: rotate(45deg);
+  }
 }
 
 @keyframes bubble-in {
