@@ -1,65 +1,309 @@
-import Image from "next/image";
+"use client";
+
+import Loader from "@/components/Loader";
+import Navbar from "@/components/Navbar";
+import FadeUp from "@/components/FadeUp";
+import RecommendationCard from "@/components/RecommendationCard";
+import EventDiscovery from "@/components/EventDiscovery";
+import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
+import content from "@/data/content.json";
 
 export default function Home() {
+  const { hero, about, experience, values, stories, speaking, services, recommendations, footer } = content;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[var(--bg-primary)] overflow-x-hidden">
+      <Loader />
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          poster="/media/walk-by-sea.png"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 brightness-75 transition-opacity duration-1000 scale-110 origin-top"
+        >
+          <source src={hero.video} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/10 z-0"></div>
+        
+        <div className="relative z-10 max-w-5xl">
+          <FadeUp delay={1.5}>
+            <p className="eyebrow mb-6 text-[var(--bg-primary)] mix-blend-difference">{hero.eyebrow}</p>
+          </FadeUp>
+          <FadeUp delay={1.7}>
+            <h1 className="mb-8 text-[var(--bg-primary)] mix-blend-difference leading-[1.1]">
+              Transformative experiences<br />
+              in Malaga.
+            </h1>
+          </FadeUp>
+          <FadeUp delay={1.9}>
+            <p className="max-w-2xl mx-auto text-xl text-[var(--bg-primary)] mix-blend-difference font-light">
+              {hero.subheadline}
+            </p>
+          </FadeUp>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-[var(--bg-primary)] border-b border-[var(--color-border-subtle)] overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee">
+          <div className="flex gap-20 px-10">
+            {values.map((v, i) => (
+              <div key={`v1-${i}`} className="border-l border-[var(--color-border-subtle)] pl-8 py-4 min-w-[300px]">
+                <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
+                <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-20 px-10">
+            {values.map((v, i) => (
+              <div key={`v2-${i}`} className="border-l border-[var(--color-border-subtle)] pl-8 py-4 min-w-[300px]">
+                <h4 className="eyebrow mb-4 text-[var(--accent-strong)]">{v.label}</h4>
+                <p className="text-sm font-sans text-[var(--text-secondary)] whitespace-normal">{v.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="section-padding bg-[var(--bg-primary)]">
+        <div className="container-width">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <FadeUp>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-[var(--color-border-subtle)]">
+                <img 
+                  src={about.image} 
+                  alt="Ana Ontoria" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                />
+              </div>
+            </FadeUp>
+            <div>
+              <FadeUp>
+                <p className="eyebrow mb-6">{about.eyebrow}</p>
+                <h2 className="mb-8">{about.headline}</h2>
+                <div className="space-y-6 text-lg">
+                  {about.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </FadeUp>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="section-padding bg-[var(--bg-secondary)]">
+        <div className="container-width">
+          <FadeUp>
+            <p className="eyebrow mb-6">Our Services</p>
+            <h2 className="mb-8">{services.headline}</h2>
+            <p className="text-xl max-w-2xl mb-16 text-[var(--text-secondary)]">{services.description}</p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.items.map((service, i) => (
+              <FadeUp key={service.id} delay={i * 0.1}>
+                <div className="bg-[var(--bg-primary)] p-12 h-full border border-[var(--color-border-subtle)] rounded-sm group hover:border-[var(--accent-strong)] transition-all duration-500">
+                  <div className="flex justify-between items-start mb-10">
+                    <span className="text-xs font-sans uppercase tracking-widest text-[var(--accent-strong)]">{service.audience}</span>
+                    <span className="text-xs font-sans text-[var(--text-secondary)] italic">{service.duration}</span>
+                  </div>
+                  <h3 className="text-3xl font-serif mb-8 group-hover:text-[var(--accent-strong)] transition-colors">{service.title}</h3>
+                  <ul className="space-y-4 mb-10">
+                    {service.details.map((detail, j) => (
+                      <li key={j} className="flex gap-3 text-sm text-[var(--text-secondary)]">
+                        <CheckCircle2 size={16} className="text-[var(--accent-soft)] shrink-0" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#quiz" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-sans border-b border-[var(--accent-strong)] pb-1 hover:opacity-60 transition-opacity mt-auto">
+                    Learn More
+                  </a>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Discovery Quiz Section */}
+      <EventDiscovery />
+
+      {/* Experience Section */}
+      <section id="experience" className="section-padding bg-[var(--bg-primary)]">
+        <div className="container-width">
+          <FadeUp>
+            <p className="eyebrow mb-6">Expertise & Background</p>
+            <h2 className="mb-16">The bridge between strategy and people.</h2>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+            <div className="md:col-span-5">
+              <FadeUp>
+                <h3 className="text-2xl font-serif mb-4 text-[var(--accent-strong)]">A decade in Dublin Tech</h3>
+                <p className="text-lg">
+                  Mastering the art of professional communication and B2B strategy at LinkedIn. Combining data-driven insights with a passion for diversity, equity, and inclusion.
+                </p>
+                <div className="mt-8 aspect-video rounded-sm overflow-hidden border border-[var(--color-border-subtle)]">
+                   <img src="/media/laptop-notebook-on-table.jpg" className="w-full h-full object-cover" alt="Workspace" />
+                </div>
+              </FadeUp>
+            </div>
+            
+            <div className="md:col-span-7 space-y-12">
+              {experience.map((item, i) => (
+                <FadeUp key={i}>
+                  <div className="border-t border-[var(--color-border-subtle)] pt-8">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                      <h4 className="text-xl font-medium font-sans">{item.role}</h4>
+                      <span className="text-sm font-sans text-[var(--text-secondary)]">{item.period}</span>
+                    </div>
+                    <p className="text-[var(--text-secondary)]">{item.description}</p>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stories Section */}
+      <section id="stories" className="section-padding bg-[var(--bg-secondary)]">
+        <div className="container-width">
+          <FadeUp>
+            <p className="eyebrow mb-6">Philosophy</p>
+            <h2 className="mb-16">Insights from the field.</h2>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {stories.map((story, i) => (
+              <FadeUp key={story.id} delay={i * 0.1}>
+                <div className="bg-[var(--bg-primary)] h-full flex flex-col md:flex-row border border-[var(--color-border-subtle)] hover:border-[var(--accent-soft)] transition-colors duration-500 group overflow-hidden">
+                  <div className="md:w-1/2 aspect-square md:aspect-auto overflow-hidden">
+                     <img src={story.image} alt={story.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  </div>
+                  <div className="p-10 md:w-1/2 flex flex-col justify-center">
+                    <span className="text-xs font-sans uppercase tracking-widest text-[var(--accent-strong)] mb-6">{story.category}</span>
+                    <h3 className="text-2xl font-serif mb-6 leading-tight group-hover:text-[var(--accent-strong)] transition-colors">{story.title}</h3>
+                    <p className="text-base mb-8 italic font-light">"{story.content}"</p>
+                    <div className="pt-6 border-t border-[var(--color-border-subtle)]">
+                      <p className="text-sm font-serif text-[var(--accent-strong)]">{story.quote}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recommendations Section */}
+      <section id="recommendations" className="py-32 px-6 bg-[var(--bg-primary)] border-t border-[var(--color-border-subtle)] overflow-hidden">
+        <div className="container-width">
+           <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+              <FadeUp>
+                <p className="eyebrow mb-6">Testimonials</p>
+                <h2 className="text-5xl md:text-7xl max-w-2xl text-[var(--text-primary)]">Trust built in tech.</h2>
+              </FadeUp>
+              <FadeUp delay={0.2}>
+                <div className="flex items-center gap-4 text-[var(--accent-strong)]">
+                  <div className="flex">
+                    {[1,2,3,4,5].map(s => <Star key={s} size={16} fill="var(--accent-strong)" className="text-[var(--accent-strong)]" />)}
+                  </div>
+                  <span className="font-sans text-sm tracking-widest uppercase text-[var(--text-secondary)]">Top Rated</span>
+                </div>
+              </FadeUp>
+           </div>
+           
+           <div className="flex flex-col border-t border-[var(--color-border-subtle)]">
+              {recommendations.map((rec, i) => (
+                <FadeUp key={i} delay={i * 0.1}>
+                  <RecommendationCard {...rec} />
+                </FadeUp>
+              ))}
+           </div>
+
+           <FadeUp delay={0.4}>
+             <div className="mt-20 text-center">
+               <a 
+                 href={content.personal.linkedin} 
+                 target="_blank" 
+                 className="inline-flex items-center gap-3 text-[var(--text-primary)] border border-[var(--color-border-subtle)] px-12 py-6 rounded-sm hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all uppercase tracking-widest text-xs font-sans"
+               >
+                 {footer.linkedin_cta} <ArrowUpRight size={18} />
+               </a>
+             </div>
+           </FadeUp>
+        </div>
+      </section>
+
+      {/* Speaking Section */}
+      <section id="speaking" className="section-padding bg-[var(--bg-primary)]">
+        <div className="container-width">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="order-2 md:order-1">
+              <FadeUp>
+                <p className="eyebrow mb-6">{speaking.eyebrow}</p>
+                <h2 className="mb-8">{speaking.headline}</h2>
+                <div className="space-y-6 text-lg mb-8">
+                  {speaking.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+                <a href="#quiz" className="bg-[var(--accent-strong)] text-[var(--bg-primary)] px-10 py-5 rounded-sm font-sans uppercase tracking-widest text-xs hover:bg-[var(--text-primary)] transition-colors inline-block">
+                  Discover Your Format
+                </a>
+              </FadeUp>
+            </div>
+            <FadeUp className="order-1 md:order-2">
+              <div className="relative aspect-square rounded-sm overflow-hidden border border-[var(--color-border-subtle)]">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  poster="/media/laptop-notebook-on-table.jpg"
+                  className="w-full h-full object-cover"
+                >
+                  <source src={speaking.video} type="video/mp4" />
+                </video>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative py-32 px-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={footer.image} className="w-full h-full object-cover opacity-20" alt="Footer background" />
+        </div>
+        <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-end gap-10">
+          <div>
+            <p className="eyebrow mb-4 opacity-60">Integrated Event Coordination</p>
+            <div className="font-serif text-5xl md:text-8xl mb-8 tracking-tighter">
+              Let's connect.
+            </div>
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <p className="text-sm font-sans text-[var(--text-secondary)] uppercase tracking-widest">© 2026 {content.personal.location}</p>
+              <a href={content.personal.linkedin} target="_blank" rel="noopener noreferrer" className="custom-button flex items-center gap-2 text-sm uppercase tracking-widest">
+                LinkedIn <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </div>
+          <div className="font-serif text-2xl opacity-40">
+            {content.personal.name}
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }

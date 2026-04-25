@@ -1,0 +1,143 @@
+{
+  "personal": {
+    "name": "Ana Ontoria Briones",
+    "title": "Marketing Strategy & Event Excellence",
+    "location": "Malaga, Spain | Dublin, Ireland",
+    "education": "Psychology Student @NCI",
+    "linkedin": "https://www.linkedin.com/in/anaontoria/"
+  },
+  "hero": {
+    "eyebrow": "Integrated Event Coordination",
+    "headline": "Transformative experiences in Malaga.",
+    "subheadline": "Bridging 10 years of Dublin tech expertise with human-centric event design. Empowering teams and individuals through creativity, strategy, and confidence.",
+    "video": "/media/website-ana-1.mp4"
+  },
+  "about": {
+    "eyebrow": "The Journey",
+    "headline": "Dublin Tech. Malaga Heart.",
+    "paragraphs": [
+      "After a decade in Dublin's thriving tech scene—working in Marketing Science and Global DEI leadership at LinkedIn—I am bringing my expertise to Malaga. My approach combines the rigor of B2B strategy with the deep empathy of my psychology studies.",
+      "I help Spanish professionals find their voice in English, and global corporate teams find their rhythm through immersive, creative experiences.",
+      "Whether it's a multi-day retreat or a tailored 1-on-1 session, every interaction is designed to turn fear into mastership and data into human connection."
+    ],
+    "image": "/media/women-in-convo.png"
+  },
+  "services": {
+    "headline": "Tailored Experiences",
+    "description": "Flexible formats designed for impact. From corporate immersions to individual empowerment.",
+    "pricing": "Quotes are bespoke and tailored to your specific needs.",
+    "items": [
+      {
+        "id": "corporate-immersion",
+        "title": "Corporate Immersion",
+        "duration": "2 - 3 Days",
+        "audience": "Corporate Teams",
+        "details": [
+          "Day 1: Meditation & Creative Flow",
+          "Day 2: Personal Brand & LinkedIn Intelligence",
+          "Optional Day 3: Strategic Roadmap Development"
+        ]
+      },
+      {
+        "id": "team-building",
+        "title": "Team Excellence",
+        "duration": "Single Day / Workshop",
+        "audience": "Corporate Teams",
+        "details": [
+          "Improv for Business Communication",
+          "Empathy-Led Leadership",
+          "Collaboration & Psychological Safety"
+        ]
+      },
+      {
+        "id": "individual-coaching",
+        "title": "Confidence & Empowerment",
+        "duration": "1-on-1 Sessions",
+        "audience": "Individual Professionals",
+        "details": [
+          "Mastering English for Global Audiences",
+          "Personal Branding for LinkedIn",
+          "Public Speaking & Fear Mastery"
+        ]
+      }
+    ]
+  },
+  "experience": [
+    {
+      "company": "LinkedIn",
+      "role": "Marketing Science Strategist",
+      "period": "2026 — Present",
+      "description": "Translating complex business questions into clear, actionable recommendations through measurement strategy and advanced analysis."
+    },
+    {
+      "company": "LinkedIn",
+      "role": "Global Co-Lead, Out@In",
+      "period": "2025 — Present",
+      "description": "Leading the Employee Resource Group's mission and strategic vision globally. Amplifying underrepresented voices."
+    },
+    {
+      "company": "Dublin Tech Scene",
+      "role": "10 Years Expertise",
+      "period": "2016 — 2026",
+      "description": "Built a career at the intersection of marketing, B2B strategy, and public speaking, mastering the art of professional communication."
+    }
+  ],
+  "values": [
+    { "label": "Social Intelligence", "desc": "Navigating complex human dynamics with empathy and insight." },
+    { "label": "Authentic Zest", "desc": "Bringing energy and passion to every strategic challenge." },
+    { "label": "Flexibility", "desc": "Custom-tailored events that adapt to your team's unique rhythm." },
+    { "label": "Creativity", "desc": "Bridging data and art to tell stories that resonate." }
+  ],
+  "stories": [
+    {
+      "id": "accents",
+      "title": "The Melody of Accents",
+      "category": "Empowerment",
+      "content": "For Spanish professionals, English is a tool, not a barrier. I empower women to own their accents as a sign of their culture and expertise. Being understood matters more than being perfect.",
+      "quote": "Your voice is your most powerful asset.",
+      "image": "/media/walk-by-sea.png"
+    },
+    {
+      "id": "vulnerability",
+      "title": "Courage in Malaga",
+      "category": "Growth",
+      "content": "Moving my expertise to Spain is about creating a bridge. From the high-pressure boardrooms of Dublin to the serene creative spaces of Malaga, courage is what links the two.",
+      "quote": "Challenge creates change.",
+      "image": "/media/people-reflecting-in-sun.png"
+    }
+  ],
+  "speaking": {
+    "eyebrow": "Public Speaking & Coaching",
+    "headline": "Turning fear into confidence.",
+    "paragraphs": [
+      "I help individuals master communication. For non-native speakers, accents are not wrong notes; they are just different scales on a piano.",
+      "My background in Dublin tech and my psychology studies allow me to approach coaching from both a strategic and human perspective."
+    ],
+    "video": "/media/female-laughing.mp4"
+  },
+  "recommendations": [
+    {
+      "name": "Kenneth Wee",
+      "role": "Talent at LinkedIn | I/O Psychologist",
+      "summary": "Ana leads with empathy and builds trust.",
+      "text": "Ana is a thoughtful leader who actively seeks and values feedback, fostering a highly participative environment. She leads with empathy, genuinely caring for her leadership team as individuals while building trust and alignment."
+    },
+    {
+      "name": "Danyela Vidaletti",
+      "role": "Data Analyst | BI & Analytics",
+      "summary": "Her energy and enthusiasm are contagious.",
+      "text": "Your energy and enthusiasm are contagious, and you create a space where people feel comfortable and encouraged to grow. You helped me clearly identify and articulate my skills."
+    },
+    {
+      "name": "Maria Rodriguez Perez",
+      "role": "Monetization Services Analyst @Stripe",
+      "summary": "A standout in DIBs and community building.",
+      "text": "She personally helped me prepare to run workshops and facilitate Coaching and Peer sessions, giving me the courage to step outside my comfort zone. Ana is so talented and inspiring!"
+    }
+  ],
+  "footer": {
+    "image": "/media/women-meditation-by-sea.png",
+    "linkedin_cta": "View all 50+ recommendations on LinkedIn"
+  }
+}
+
