@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import FadeUp from "@/components/FadeUp";
 import RecommendationCard from "@/components/RecommendationCard";
 import EventDiscovery from "@/components/EventDiscovery";
+import FloatingLint from "@/components/FloatingLint";
 import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
 import content from "@/data/content.json";
 
@@ -54,6 +55,8 @@ export default function Home() {
             className="h-full w-auto object-contain object-bottom opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
           />
         </FadeUp>
+
+        <FloatingLint />
       </section>
 
       {/* Values Section */}
