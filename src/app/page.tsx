@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import FadeUp from "@/components/FadeUp";
 import RecommendationCard from "@/components/RecommendationCard";
 import EventDiscovery from "@/components/EventDiscovery";
-import { ArrowUpRight, CheckCircle2, Star, X } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
 import content from "@/data/content.json";
 import { useState, useRef } from "react";
 import gsap from "gsap";
@@ -67,15 +67,8 @@ export default function Home() {
           </FadeUp>
 
           {isBubbleOpen && (
-            <div className="absolute bottom-[75%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[65%] z-50 w-[280px] md:w-[320px]">
-              <div className="speech-bubble glass-card text-left relative">
-                <button 
-                  onClick={(e) => { e.stopPropagation(); setIsBubbleOpen(false); }}
-                  className="absolute top-4 right-4 text-[var(--accent-soft)] hover:text-[var(--accent-strong)] transition-colors"
-                >
-                  <X size={16} />
-                </button>
-                <p className="text-xs font-sans mb-2 text-[var(--accent-strong)] font-medium uppercase tracking-widest">Ana Ontoria</p>
+            <div className="absolute bottom-[75%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[55%] z-50 w-[260px] md:w-[300px]">
+              <div className="speech-bubble glass-card text-left">
                 <p className="text-lg md:text-xl font-serif mb-4 text-[var(--text-primary)] leading-snug">
                   Hola! I love to connect, let's chat about your next experience in Málaga.
                 </p>

@@ -150,30 +150,6 @@ p {
   transform-origin: bottom right;
 }
 
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  background: inherit;
-  backdrop-filter: inherit;
-  -webkit-backdrop-filter: inherit;
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  transform: translateX(-50%) rotate(45deg);
-  z-index: -1;
-}
-
-@media (min-width: 768px) {
-  .speech-bubble::after {
-    left: auto;
-    right: 40px;
-    transform: rotate(45deg);
-  }
-}
-
 @keyframes bubble-in {
   from {
     opacity: 0;
