@@ -4,6 +4,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function FadeUp({
   children,
   className = "",
@@ -16,30 +20,31 @@ export default function FadeUp({
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof window === "undefined") return;
+
     const el = elementRef.current;
     if (!el) return;
 
-    const animation = gsap.fromTo(
-      el,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        delay: delay,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          delay: delay,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, elementRef);
 
-    return () => {
-      animation.kill();
-    };
+    return () => ctx.revert();
   }, [delay]);
 
   return (

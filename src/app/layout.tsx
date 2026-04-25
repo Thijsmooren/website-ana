@@ -5,12 +5,12 @@ import Cursor from "@/components/Cursor";
 
 export const metadata: Metadata = {
   title: "Ana Ontoria Briones | Integrated Event Coordination & Tech Strategy",
-  description: "Dublin Tech Expertise. Malaga Heart. Transforming corporate teams and individuals through immersive event design, strategy, and confidence coaching.",
-  keywords: ["Event Coordination Malaga", "Corporate Retreats Spain", "Marketing Strategy", "Public Speaking Coach", "Malaga Tech Scene", "Ana Ontoria Briones", "Leadership Coaching"],
+  description: "Dublin Tech Expertise. Málaga Heart. Transforming corporate teams and individuals through immersive event design, strategy, and confidence coaching.",
+  keywords: ["Event Coordination Málaga", "Corporate Retreats Spain", "Marketing Strategy", "Public Speaking Coach", "Málaga Tech Scene", "Ana Ontoria Briones", "Leadership Coaching"],
   authors: [{ name: "Ana Ontoria Briones" }],
   openGraph: {
     title: "Ana Ontoria Briones | Integrated Event Coordination & Tech Strategy",
-    description: "Bridging Dublin tech expertise with Malaga's creative energy. Bespoke corporate events and individual empowerment.",
+    description: "Bridging Dublin tech expertise with Málaga's creative energy. Bespoke corporate events and individual empowerment.",
     url: "https://anaontoria.com",
     siteName: "Ana Ontoria Briones Portfolio",
     locale: "en_ES",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ana Ontoria Briones | Malaga Event Excellence",
-    description: "Dublin Tech Expertise. Malaga Heart.",
+    title: "Ana Ontoria Briones | Málaga Event Excellence",
+    description: "Dublin Tech Expertise. Málaga Heart.",
   },
   robots: {
     index: true,

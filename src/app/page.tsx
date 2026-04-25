@@ -24,28 +24,36 @@ export default function Home() {
           muted 
           playsInline 
           poster="/media/walk-by-sea.png"
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 brightness-75 transition-opacity duration-1000 scale-110 origin-top"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-50 brightness-90 transition-opacity duration-1000 scale-110 origin-top"
         >
           <source src={hero.video} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/10 z-0"></div>
+        <div className="absolute inset-0 bg-[var(--bg-primary)]/40 z-0"></div>
         
-        <div className="relative z-10 max-w-5xl">
+        <div className="relative z-30 max-w-5xl -translate-x-8 md:-translate-x-24">
           <FadeUp delay={1.5}>
             <p className="eyebrow mb-6 text-[var(--bg-primary)] mix-blend-difference">{hero.eyebrow}</p>
           </FadeUp>
           <FadeUp delay={1.7}>
-            <h1 className="mb-8 text-[var(--bg-primary)] mix-blend-difference leading-[1.1]">
+            <h1 className="mb-8 text-[var(--olive)] leading-[1.1]">
               Transformative experiences<br />
-              in Malaga.
+              in Málaga.
             </h1>
           </FadeUp>
           <FadeUp delay={1.9}>
-            <p className="max-w-2xl mx-auto text-xl text-[var(--bg-primary)] mix-blend-difference font-light">
+            <p className="max-w-2xl mx-auto text-xl text-[var(--text-primary)] font-light">
               {hero.subheadline}
             </p>
           </FadeUp>
         </div>
+
+        <FadeUp delay={2.2} className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-64 z-10 h-[55vh] md:h-[90vh] pointer-events-none transition-all duration-1000">
+          <img 
+            src="/media/ana/ana-profile-no-background.png" 
+            alt="Ana Ontoria" 
+            className="h-full w-auto object-contain object-bottom opacity-40 md:opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+          />
+        </FadeUp>
       </section>
 
       {/* Values Section */}
@@ -75,11 +83,11 @@ export default function Home() {
         <div className="container-width">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeUp>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-[var(--color-border-subtle)]">
+              <div className="relative aspect-video overflow-hidden rounded-sm border border-[var(--color-border-subtle)]">
                 <img 
                   src={about.image} 
                   alt="Ana Ontoria" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                  className="w-full h-full object-cover scale-110 object-[center_30%] hover:scale-115 transition-transform duration-1000"
                 />
               </div>
             </FadeUp>
@@ -153,7 +161,7 @@ export default function Home() {
                   Mastering the art of professional communication and B2B strategy at LinkedIn. Combining data-driven insights with a passion for diversity, equity, and inclusion.
                 </p>
                 <div className="mt-8 aspect-video rounded-sm overflow-hidden border border-[var(--color-border-subtle)]">
-                   <img src="/media/laptop-notebook-on-table.jpg" className="w-full h-full object-cover" alt="Workspace" />
+                   <img src="/media/ana/ana-presentation-madrid.jpg" className="w-full h-full object-cover" alt="Ana presenting in Madrid" />
                 </div>
               </FadeUp>
             </div>
@@ -201,6 +209,46 @@ export default function Home() {
                 </div>
               </FadeUp>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding bg-[var(--bg-primary)] overflow-hidden">
+        <div className="container-width">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <FadeUp>
+              <div className="relative aspect-[9/16] md:aspect-video rounded-sm overflow-hidden border border-[var(--color-border-subtle)] bg-[var(--bg-secondary)]">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/media/ana/ana-presentation-madrid-2.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              </div>
+            </FadeUp>
+            <div>
+              <FadeUp>
+                <p className="eyebrow mb-6">Social Proof</p>
+                <h2 className="mb-8">Energy that transforms.</h2>
+                <p className="text-xl text-[var(--text-secondary)] mb-8">
+                  Whether it's a corporate stage or an intimate workshop, the goal is always the same: building the confidence to be understood and the strategy to be heard.
+                </p>
+                <div className="flex gap-12">
+                  <div>
+                    <div className="text-4xl font-serif mb-2 text-[var(--accent-strong)]">50+</div>
+                    <p className="text-xs uppercase tracking-widest text-[var(--text-secondary)]">Recommendations</p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-serif mb-2 text-[var(--accent-strong)]">10Y</div>
+                    <p className="text-xs uppercase tracking-widest text-[var(--text-secondary)]">Tech Expertise</p>
+                  </div>
+                </div>
+              </FadeUp>
+            </div>
           </div>
         </div>
       </section>
