@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-serif",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
 
 export const metadata: Metadata = {
   title: "Ana Ontoria Briones | Integrated Event Coordination & Tech Strategy",
@@ -38,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased font-sans">
+      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans`}>
         <Cursor />
         <SmoothScroll>
           {children}
