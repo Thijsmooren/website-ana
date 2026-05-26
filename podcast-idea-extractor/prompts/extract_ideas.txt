@@ -1,0 +1,29 @@
+You are analyzing a Moonshots with Peter Diamandis podcast transcript.
+
+Find only concrete business ideas, startup opportunities, moonshot opportunities, or market gaps mentioned or strongly implied.
+
+Extract at most 2 ideas.
+
+For each idea, return:
+
+## Idea title
+
+One-sentence summary.
+
+**Problem:**  
+What problem is being described?
+
+**Opportunity:**  
+What could someone build as a business?
+
+**Why now:**  
+Why is this becoming possible or urgent?
+
+**Evidence from episode:**  
+Short quote or paraphrase from the transcript.
+
+**Potential score:**  
+1-10, with one short reason.
+
+If there are no real business ideas, say exactly:
+No clear business idea found.
